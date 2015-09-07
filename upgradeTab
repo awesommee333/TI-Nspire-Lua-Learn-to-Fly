@@ -1,0 +1,27 @@
+screen=platform.window
+screenWidth=screen:width()
+screenHeight=screen:height()
+
+function on.construction()
+    timer.start(1/5)
+end
+
+function on.timer()
+    screen:invalidate()
+end
+
+function on.paint(gc)
+    SH=gc:getStringHeight("d")
+    if var.recall("damageLFI")~=nil and var.recall("uDamageCostLFI")~=nil then
+        gc:drawString("D: "..var.recall("damageLFI").." uDC: "..var.recall("uDamageCostLFI"), 0, 0, "top")
+    end
+    if var.recall("bulletSpeedLFI")~=nil and var.recall("uBulletSpeedCostLFI")~=nil then
+        gc:drawString("BS: "..var.recall("bulletSpeedLFI").." uBSC: "..var.recall("uBulletSpeedCostLFI"), 0, SH, "top")
+    end
+    if var.recall("SPCLFI")~=nil and var.recall("uSPCCLFI")~=nil then
+        gc:drawString("SPC: "..var.recall("SPCLFI").." uSPCC: "..var.recall("uSPCCLFI"), 0, SH*2, "top")
+    end
+    if var.recall("ASLFI")~=nil and var.recall("uASCLFI")~=nil then
+        gc:drawString("AS: "..var.recall("ASLFI").." uASC: "..var.recall("uASCLFI"), 0, SH*3, "top")
+    end
+end
